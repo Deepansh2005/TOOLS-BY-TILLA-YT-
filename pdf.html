@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOOLS BY TILLA YT </title>
+    <link rel="stylesheet" href="pdf.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TOOLS BY TILLA YT </h1>
+            <p>Upload PDF and audio files for magic</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- PDF Merge Tool -->
+            <div class="tool-card">
+                <span class="tool-icon">&#128513</span>
+                <h2>Merge PDFs</h2>
+                <p>Combine multiple PDF files into one document</p>
+                
+                <div class="upload-area" id="mergePdfArea">
+                    <input type="file" id="mergePdfInput" accept=".pdf" multiple>
+                    <div class="upload-icon">&#128515</div>
+                    <p>Click or drag PDFs here</p>
+                </div>
+                
+                <div class="file-list" id="mergeFileList"></div>
+                
+                <div class="progress-bar" id="mergeProgress">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <button class="action-btn" id="mergePdfBtn" disabled>Merge PDFs</button>
+                
+                <div class="status-message" id="mergeStatus"></div>
+            </div>
+
+            <!-- PDF Resize Tool -->
+            <div class="tool-card">
+                <span class="tool-icon">📏</span>
+                <h2>Resize PDF</h2>
+                <p>Change the page size of your PDF documents</p>
+                
+                <div class="upload-area" id="resizePdfArea">
+                    <input type="file" id="resizePdfInput" accept=".pdf">
+                    <div class="upload-icon">&#128515</div>
+                    <p>Click or drag a PDF here</p>
+                </div>
+                
+                <div class="file-list" id="resizeFileList"></div>
+                
+                <div class="options">
+                    <div class="option-group">
+                        <label>Page Size:</label>
+                        <select id="pageSizeSelect">
+                            <option value="a4">A4 (210 x 297 mm)</option>
+                            <option value="letter">Letter (8.5 x 11 in)</option>
+                            <option value="a3">A3 (297 x 420 mm)</option>
+                            <option value="a5">A5 (148 x 210 mm)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label>
+                            Scale: <span class="range-value" id="scaleValue">100%</span>
+                        </label>
+                        <input type="range" id="scaleRange" min="50" max="200" value="100">
+                    </div>
+                </div>
+                
+                <div class="progress-bar" id="resizeProgress">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <button class="action-btn" id="resizePdfBtn" disabled>Resize PDF</button>
+                
+                <div class="status-message" id="resizeStatus"></div>
+            </div>
+
+            <!-- Audio Compress Tool -->
+            <div class="tool-card">
+                <span class="tool-icon">🎵</span>
+                <h2>Compress Audio</h2>
+                <p>Reduce the size of your audio files</p>
+                
+                <div class="upload-area" id="audioArea">
+                    <input type="file" id="audioInput" accept="audio/*" multiple>
+                    <div class="upload-icon">📁</div>
+                    <p>Click or drag audio files here</p>
+                </div>
+                
+                <div class="file-list" id="audioFileList"></div>
+                
+                <div class="options">
+                    <div class="option-group">
+                        <label>
+                            Quality: <span class="range-value" id="qualityValue">0.7</span>
+                        </label>
+                        <input type="range" id="qualityRange" min="0.1" max="1" step="0.1" value="0.7">
+                    </div>
+                </div>
+                
+                <div class="progress-bar" id="audioProgress">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <button class="action-btn" id="compressAudioBtn" disabled>Compress Audio</button>
+                
+                <div class="status-message" id="audioStatus"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="pdf.js"></script>
+</body>
+</html>
