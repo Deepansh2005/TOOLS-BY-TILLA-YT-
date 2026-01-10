@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOOLS BY TILLA YT </title>
-    <link rel="stylesheet" href="pdf.css">
+    <title>TOOLS BY TILLA YT</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>TOOLS BY TILLA YT </h1>
+            <h1>TOOLS BY TILLA YT</h1>
             <p>Upload PDF and audio files for magic</p>
         </div>
 
         <div class="tools-grid">
-            <!-- PDF Merge Tool -->
+            <!-- PDF Merge Tool with Reordering -->
             <div class="tool-card">
-                <span class="tool-icon">&#128513</span>
-                <h2>Merge PDFs</h2>
-                <p>Combine multiple PDF files into one document</p>
-                
+                <span class="tool-icon">📄</span>
+                <h2>Merge & Reorder PDFs</h2>
+                <p>Combine multiple PDF files and reorder them</p>
                 <div class="upload-area" id="mergePdfArea">
                     <input type="file" id="mergePdfInput" accept=".pdf" multiple>
-                    <div class="upload-icon">&#128515</div>
+                    <div class="upload-icon">📁</div>
                     <p>Click or drag PDFs here</p>
                 </div>
                 
@@ -38,46 +38,81 @@
                 <div class="status-message" id="mergeStatus"></div>
             </div>
 
-            <!-- PDF Resize Tool -->
+            <!-- PDF Extract Pages Tool -->
             <div class="tool-card">
-                <span class="tool-icon">📏</span>
-                <h2>Resize PDF</h2>
-                <p>Change the page size of your PDF documents</p>
+                <span class="tool-icon">✂️</span>
+                <h2>Extract PDF Pages</h2>
+                <p>Select pages visually to extract</p>
                 
-                <div class="upload-area" id="resizePdfArea">
-                    <input type="file" id="resizePdfInput" accept=".pdf">
-                    <div class="upload-icon">&#128515</div>
+                <div class="upload-area" id="extractPdfArea">
+                    <input type="file" id="extractPdfInput" accept=".pdf">
+                    <div class="upload-icon">📁</div>
                     <p>Click or drag a PDF here</p>
                 </div>
                 
-                <div class="file-list" id="resizeFileList"></div>
+                <div class="file-list" id="extractFileList"></div>
+                
+                <div id="pdfPreviewContainer" class="pdf-preview-container" style="display: none;">
+                    <div class="preview-header">
+                        <div class="selection-info">
+                            <span id="selectionCount">0 pages selected</span>
+                            <button class="select-all-btn" id="selectAllBtn">Select All</button>
+                            <button class="deselect-all-btn" id="deselectAllBtn">Deselect All</button>
+                        </div>
+                    </div>
+                    <div id="pdfPagesGrid" class="pdf-pages-grid"></div>
+                </div>
+                
+                <div class="progress-bar" id="extractProgress">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <button class="action-btn" id="extractPdfBtn" disabled>Extract Selected Pages</button>
+                
+                <div class="status-message" id="extractStatus"></div>
+            </div>
+
+            <!-- PDF Rotate Tool -->
+            <div class="tool-card">
+                <span class="tool-icon">🔄</span>
+                <h2>Rotate PDF</h2>
+                <p>Rotate pages in your PDF documents</p>
+                
+                <div class="upload-area" id="rotatePdfArea">
+                    <input type="file" id="rotatePdfInput" accept=".pdf">
+                    <div class="upload-icon">📁</div>
+                    <p>Click or drag a PDF here</p>
+                </div>
+                
+                <div class="file-list" id="rotateFileList"></div>
                 
                 <div class="options">
                     <div class="option-group">
-                        <label>Page Size:</label>
-                        <select id="pageSizeSelect">
-                            <option value="a4">A4 (210 x 297 mm)</option>
-                            <option value="letter">Letter (8.5 x 11 in)</option>
-                            <option value="a3">A3 (297 x 420 mm)</option>
-                            <option value="a5">A5 (148 x 210 mm)</option>
+                        <label>Rotation Angle:</label>
+                        <select id="rotationSelect">
+                            <option value="90">90° Clockwise</option>
+                            <option value="180">180°</option>
+                            <option value="270">270° (90° Counter-clockwise)</option>
                         </select>
                     </div>
                     
                     <div class="option-group">
-                        <label>
-                            Scale: <span class="range-value" id="scaleValue">100%</span>
-                        </label>
-                        <input type="range" id="scaleRange" min="50" max="200" value="100">
+                        <label>Apply to:</label>
+                        <select id="pageRangeSelect">
+                            <option value="all">All Pages</option>
+                            <option value="odd">Odd Pages Only</option>
+                            <option value="even">Even Pages Only</option>
+                        </select>
                     </div>
                 </div>
                 
-                <div class="progress-bar" id="resizeProgress">
+                <div class="progress-bar" id="rotateProgress">
                     <div class="progress-fill"></div>
                 </div>
                 
-                <button class="action-btn" id="resizePdfBtn" disabled>Resize PDF</button>
+                <button class="action-btn" id="rotatePdfBtn" disabled>Rotate PDF</button>
                 
-                <div class="status-message" id="resizeStatus"></div>
+                <div class="status-message" id="rotateStatus"></div>
             </div>
 
             <!-- Audio Compress Tool -->
@@ -114,6 +149,6 @@
         </div>
     </div>
 
-    <script src="pdf.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
